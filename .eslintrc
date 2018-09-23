@@ -130,6 +130,8 @@
     "test": true,
     "expect": true,
     "jest": true,
-    "FileReader": true
+    "FileReader": true,
+    "beforeEach": true,
+    "afterEach": true,
   }
 }

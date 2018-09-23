@@ -19,6 +19,9 @@ const dropBeforeColon = (obj) => {
     if (typeof (obj[newName]) === 'object') {
       obj[newName] = dropBeforeColon(obj[newName]);
     }
+    if (typeof (obj[oldName]) === 'object') {
+      obj[oldName] = dropBeforeColon(obj[oldName]);
+    }
   }
   return obj;
 };

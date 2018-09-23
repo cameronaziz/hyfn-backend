@@ -4,7 +4,7 @@ import * as tools from '../../tools';
 const ads = () => {
   const adsList = [];
   for (const ad of data.ads) {
-    ads.push(tools.dropBeforeColon(tools.camelCase(ad)));
+    adsList.push(tools.dropBeforeColon(tools.camelCase(ad)));
   }
   return adsList;
 };

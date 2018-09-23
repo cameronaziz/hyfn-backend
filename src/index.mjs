@@ -1,26 +1,30 @@
-import Apollo from 'apollo-server';
+import Apollo, * as ApolloExports from 'apollo-server';
 import dotenv from 'dotenv';
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
+import Config from './config';
+
+const apollo = Apollo || ApolloExports;
 
 dotenv.config();
-const { PORT, NODE_ENV } = process.env;
+const { PORT } = process.env;
+const config = new Config();
 
-let production = false;
-if (NODE_ENV === 'production') {
-  production = true;
-}
-
-const server = new Apollo.ApolloServer({
+const server = new apollo.ApolloServer({
   typeDefs,
   resolvers,
-  playground: !production,
+  playground: !config.production,
   formatError: (error) => {
+    /* istanbul ignore next */
     console.log(error);
-    return error;
   },
 });
 
-server.listen({ port: PORT }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+if (!config.test) {
+  server.listen({ port: PORT }).then(({ url }) => {
+    /* istanbul ignore next */
+    console.log(`🚀 Server ready at ${url}`);
+  });
+};
+
+export default server;

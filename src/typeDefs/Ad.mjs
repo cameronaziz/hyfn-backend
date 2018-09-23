@@ -1,6 +1,6 @@
-import Apollo from 'apollo-server';
+import gql from 'graphql-tag';
 
-const Ad = Apollo.gql`
+const Ad = gql`
   type Ad {
     id: String
     remoteId: String

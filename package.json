@@ -6,27 +6,60 @@
   "scripts": {
     "start": "NODE_ENV=production node --experimental-modules src/index.mjs ",
     "dev": "nodemon --exec \"NODE_ENV=development node --experimental-modules\" src/index.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "jest-single": "jest --coverage --collectCoverageFrom=src/**/*.mjs --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!tests/**/*.*",
+    "jest-sing": "NODE_ENV=test jest --coverage --collectCoverageFrom=src/**/*.mjs",
+    "jest": "NODE_ENV=test jest --coverage --collectCoverageFrom=src/**/*.mjs --watch",
+    "jest-singl": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
+  "jest": {
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|mjs)$",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      "^.+\\.mjs$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "mjs"
+    ],
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.mjs"
+    ]
+  },
   "dependencies": {
     "apollo-server": "^2.1.0",
     "apollo-server-express": "^2.1.0",
+    "axios": "^0.18.0",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
     "graphql": "^14.0.2",
+    "graphql-tag": "^2.9.2",
+    "jest": "^23.6.0",
     "lodash": "^4.17.11",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "react-test-renderer": "^16.5.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "v8.0.0-beta.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "supertest": "^3.3.0"
   }
 }

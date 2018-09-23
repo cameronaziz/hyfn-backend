@@ -3,7 +3,7 @@ function snakeToCamel(s) {
 }
 
 const camelCase = (obj) => {
-  if (typeof (obj) !== 'object') return obj;
+  if (typeof obj !== 'object') return obj;
 
   // eslint-disable-next-line
   for (const oldName in obj) {

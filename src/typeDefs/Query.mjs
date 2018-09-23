@@ -1,6 +1,6 @@
-import Apollo from 'apollo-server';
+import gql from 'graphql-tag';
 
-const Query = Apollo.gql`
+const Query = gql`
   type Query {
     ad: Ad
     ads: [Ad]
